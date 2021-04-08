@@ -8,7 +8,7 @@ export default function Favorites({ favorites, onSelectFavorites, isFavorite }) 
 
     return (
         <Wrapper>
-            <h3>Favoriten</h3>
+            <h2>Favoriten</h2>
             {favorites.map((favorite) =>
             (<Plantcard
 

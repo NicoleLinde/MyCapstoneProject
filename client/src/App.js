@@ -74,11 +74,11 @@ function App() {
         </Route>
         <Route path='/Butterfly'>
           {isLoading && <div>Loading...</div>}
-          {plants && <Butterfly plants={plants} />}
+          {plants && <Butterfly plants={plants} onSelectFavorites={selectFavorites} isFavorite={isFavorite} favorites={favorites} />}
         </Route>
         <Route path='/Bird'>
           {isLoading && <div>Loading...</div>}
-          {plants && <Bird plants={plants} />}
+          {plants && <Bird plants={plants} onSelectFavorites={selectFavorites} isFavorite={isFavorite} favorites={favorites} />}
         </Route>
         <Route path='/Favorites'>
           <Favorites favorites={favorites} isFavorite={isFavorite} onSelectFavorites={removeFavorites} />

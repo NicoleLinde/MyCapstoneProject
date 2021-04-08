@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 
 export default function ({ onSelectFavorites, id, isFavorite }) {
-    // const [selected, setSelected] = useState(false)setSelected(!selected) selected ? Favorites : 
+
 
 
 
