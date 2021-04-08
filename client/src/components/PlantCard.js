@@ -105,7 +105,7 @@ align-items: center;
 overflow: hidden;
   box-shadow:9px 13px 40px var(--primary);
   border-radius: 1rem;
-  margin: 1rem 1rem 1rem 1rem;
+  margin: 1rem 1rem 1.5rem 1rem;
   background-color: white;
   position: relative;
 `
@@ -133,7 +133,7 @@ margin: 0.5rem;
 const Icon = styled.img`
 height: 1.5rem;
 margin: 0.4rem;
-fill: blue;
+
 `
 
 

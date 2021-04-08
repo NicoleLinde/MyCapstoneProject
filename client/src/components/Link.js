@@ -7,16 +7,16 @@ import Bird from '../assets/gimpel.jpg'
 export default function Links() {
     return (
         <Wrapper>
-            <StyledLink to='/Bee'><Img src={Bee} />Biene</StyledLink>
+            <StyledLink to='/Bee'><Img src={Bee} />Bienen</StyledLink>
             <StyledLink to='/Butterfly'><Img src={Butterfly} />Falter</StyledLink>
-            <StyledLink to='/Bird'><Img src={Bird} />Vogel</StyledLink>
+            <StyledLink to='/Bird'><Img src={Bird} />Vögel</StyledLink>
         </Wrapper>
     )
 
 }
 
 const Wrapper = styled.div`
-height: 100vh;
+min-height: 100vh;
 display: flex;
 flex-direction:column;
 align-items:  center;
@@ -30,15 +30,14 @@ padding: 1rem 0.5rem;
 display: flex;
 align-items: center;
 gap: 3rem;
-  box-shadow:8px 12px 30px var(--primary);
-  border-radius: 1rem;
-  margin: 1rem 1rem 1rem 1rem;
-  background-color: white;
-  position: relative;
-  text-decoration: none;
-  color: #246914;
- font-size: x-large;
- 
+box-shadow:8px 12px 30px var(--primary);
+border-radius: 1rem;
+margin: 0 1rem 2rem 1rem;
+background-color: white;
+position: relative;
+text-decoration: none;
+color: #246914;
+font-size: x-large; 
 `
 
 const Img = styled.img`

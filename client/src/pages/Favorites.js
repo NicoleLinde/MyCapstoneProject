@@ -28,5 +28,5 @@ export default function Favorites({ favorites, onSelectFavorites, isFavorite }) 
 }
 
 const Wrapper = styled.div`
-height:100vh;
+min-height: 100vh;
 `

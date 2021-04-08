@@ -63,7 +63,7 @@ function App() {
 
   return (
     <div className='App'>
-      {plants && <Searchbar plants={plants} />}
+      {plants && <Searchbar plants={plants} onSelectFavorites={selectFavorites} isFavorite={isFavorite} favorites={favorites} />}
       <Switch>
         <Route exact path='/'>
           <Home />

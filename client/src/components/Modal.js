@@ -1,8 +1,16 @@
 import styled from 'styled-components'
 import { useRef } from 'react';
 import Plantcard from './PlantCard';
+import Cancel from '../assets/cancel.svg'
 
-export default function Modal({ showModal, setShowModal, modalPlant }) {
+export default function Modal({
+    showModal,
+    setShowModal,
+    modalPlant,
+    onSelectFavorites,
+    isFavorite,
+    favorites
+}) {
     const modalRef = useRef();
 
     const closeModal = (event) => {
@@ -14,15 +22,24 @@ export default function Modal({ showModal, setShowModal, modalPlant }) {
         <>
             {showModal ? (
                 <Background ref={modalRef} onClick={closeModal}>
+                    <ModalButton onClick={() => setShowModal(false)}><Icon src={Cancel} /></ModalButton>
                     <ModalContent>
-                        <Contentwrapper>
-                            <Plantcard showModal={showModal}
-                                image={modalPlant.image}
-                                name_de={modalPlant.name_de}
-                                name_lat={modalPlant.name_lat} >
-                            </Plantcard>
-                            <ModalButton onClick={() => setShowModal(false)}>X</ModalButton>
-                        </Contentwrapper>
+
+                        <Plantcard showModal={showModal}
+                            image={modalPlant.image}
+                            name_de={modalPlant.name_de}
+                            name_lat={modalPlant.name_lat}
+                            bienenfreundlich={modalPlant.bienenfreundlich}
+                            falterfreundlich={modalPlant.falterfreundlich}
+                            vogelfreundlich={modalPlant.vogelfreundlich}
+                            wasser={modalPlant.wasser}
+                            onSelectFavorites={() => onSelectFavorites(modalPlant._id)}
+                            isFavorite={isFavorite(favorites, modalPlant._id)}
+
+                        >
+                        </Plantcard>
+
+
                     </ModalContent>
                 </Background>
 
@@ -38,7 +55,7 @@ left:0;
 top:0;
 bottom:0;
 right:0;
-background: grey;
+background: rgba(255, 255, 255, 0.9);
 position:fixed;
 display:flex;
 justify-content: center;
@@ -46,21 +63,21 @@ align-items:center;
 z-index:10;
 `
 
-const Contentwrapper = styled.div`
-position:relative;
-`
-
 const ModalContent = styled.div`
 position:absolute;
-
-max-height: calc(100vh - 210px);
+max-height: calc(100vh - 4rem);
 overflow-y: auto;
+padding: 1rem;
 `
 
 const ModalButton = styled.span`
 cursor: pointer;
 position:absolute;
-top:5%;
-right:8%;
-z-index: 10;
+top:10%;
+right:3%;
+z-index: 11;
+`
+const Icon = styled.img`
+height: 1.5rem;
+margin: 0.4rem;
 `

@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Lupe from '../assets/loupe.svg'
 import Modal from '../components/Modal'
+import Logo from '../assets/plantLife.svg'
 
-export default function Searchbar({ plants }) {
+export default function Searchbar({ plants, onSelectFavorites, isFavorite, favorites }) {
 
     const [input, setInput] = useState('');
     const [filterDisplay, setFilterDisplay] = useState([]);
@@ -41,9 +42,6 @@ export default function Searchbar({ plants }) {
         setInput(inputPlant.name_de)
 
         setModalPlant(inputPlant)
-
-
-
     }
 
     function onFormSubmit(event) {
@@ -58,7 +56,7 @@ export default function Searchbar({ plants }) {
     }
     return (
         <div>
-            <Header>plantLife!</Header>
+            <HeaderImg src={Logo} />
 
             <Form
                 searchBarOpen={searchBarOpen}
@@ -88,14 +86,20 @@ export default function Searchbar({ plants }) {
 
                     </Items>
                 ))} </Container>
-            <Modal showModal={showModal} setShowModal={setShowModal} modalPlant={modalPlant}></Modal>
+            <Modal
+                showModal={showModal}
+                setShowModal={setShowModal}
+                modalPlant={modalPlant}
+                onSelectFavorites={onSelectFavorites}
+                isFavorite={isFavorite}
+                favorites={favorites}></Modal>
 
         </div>
     )
 }
 
-const Header = styled.h1`
-margin-left: 2rem;
+const HeaderImg = styled.img`
+margin: 2rem 0 0 2rem;
 `
 
 
@@ -125,7 +129,7 @@ position:relative;
 display:flex;
 align-items: center;
 boxshadow:0 4px 8px rgba(0,0,0,0.2);
-background-color:#D8E1D5;
+background-color:#96B78E;
 width: ${props => (props.searchBarOpen ? '14rem' : '3rem')};
 cursor: ${props => (props.searchBarOpen ? 'auto' : 'pointer')};
 padding: 0.8rem;

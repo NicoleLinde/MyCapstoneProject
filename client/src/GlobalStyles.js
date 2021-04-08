@@ -22,17 +22,18 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
     margin:0;
-    font-family: Roboto;
+    font-family: 'Cairo';
     padding-bottom: 7rem;
 background: linear-gradient(0deg, var(--primary) 40%, #dee8db 69%, #FFFFFF 100%);
 background-repeat: no-repeat;
 }
 
 h2 { 
-    font-weight: 600;
+  font-weight: 500;
     color: var(--primary);
     text-align: center;
-
+    font-size: 2.5rem;
+margin-top: 0rem;
 }
 
 h1 {
