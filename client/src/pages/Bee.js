@@ -1,20 +1,56 @@
 
+import { useState } from 'react'
 import styled from 'styled-components'
 import PlantCard from '../components/PlantCard'
 
 
 export default function Bee({ plants, onSelectFavorites, isFavorite, favorites }) {
+    const [color, setColor] = useState('all')
+    const [location, setLocation] = useState('all')
 
     const beeFilteredPlants = (plants.filter((plant) =>
         plant.bienenfreundlich === true))
+
+
+    const colorFilter = beeFilteredPlants.map((plant) => plant.farbe);
+    colorFilter.unshift('all');
+    let chosenColor = colorFilter.filter((c, index) => {
+        return colorFilter.indexOf(c) === index;
+    })
+
+    const byColor = (plant) => {
+        if (color === 'all') return plant;
+        return plant.farbe === color;
+    }
+    const locationFilter = beeFilteredPlants.map((plant) => plant.pflanzort);
+    locationFilter.unshift('all');
+    let chosenLocation = locationFilter.filter((c, index) => {
+        return locationFilter.indexOf(c) === index;
+    })
+
+    const byLocation = (plant) => {
+        if (location === 'all') return plant;
+        return plant.pflanzort === location;
+    }
+
+    const data = beeFilteredPlants.filter(byColor).filter(byLocation);
 
     return (
         <>
             <h2>Bienen</h2>
             <Wrapper>
+                {chosenColor.map((color, index) => (
+                    <button key={index} value={color} onClick={(event) => setColor(event.target.value)}>
+                        {color}
+                    </button>
+                ))}
+                {chosenLocation.map((location, index) => (
+                    <button key={index} value={location} onClick={(event) => setLocation(event.target.value)}>
+                        {location}
+                    </button>
+                ))}
 
-
-                {beeFilteredPlants.map((beeFilteredPlant) =>
+                {data.map((beeFilteredPlant) =>
                 (<PlantCard
                     id={beeFilteredPlant._id}
                     image={beeFilteredPlant.image}

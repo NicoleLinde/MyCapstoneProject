@@ -65,7 +65,7 @@ z-index:10;
 
 const ModalContent = styled.div`
 position:absolute;
-max-height: calc(100vh - 4rem);
+max-height: calc(100vh - 3rem);
 overflow-y: auto;
 padding: 1rem;
 `
