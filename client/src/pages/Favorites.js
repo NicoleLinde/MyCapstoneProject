@@ -2,7 +2,11 @@ import Plantcard from '../components/PlantCard'
 import styled from 'styled-components'
 
 
-export default function Favorites({ favorites, onSelectFavorites, isFavorite }) {
+export default function Favorites({
+    favorites,
+    onSelectFavorites,
+    isFavorite
+}) {
 
 
 

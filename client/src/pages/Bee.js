@@ -1,27 +1,31 @@
-
 import { useState } from 'react'
 import styled from 'styled-components'
 import PlantCard from '../components/PlantCard'
-
+import BurgerMenu from '../components/BurgerMenu/BurgerMenu'
 
 export default function Bee({ plants, onSelectFavorites, isFavorite, favorites }) {
-    const [color, setColor] = useState('all')
-    const [location, setLocation] = useState('all')
 
-    const beeFilteredPlants = (plants.filter((plant) =>
+    const filteredPlants = (plants.filter((plant) =>
         plant.bienenfreundlich === true))
 
 
-    const colorFilter = beeFilteredPlants.map((plant) => plant.farbe);
-    colorFilter.unshift('all');
-    let chosenColor = colorFilter.filter((c, index) => {
-        return colorFilter.indexOf(c) === index;
+    const beeFilteredPlants = filteredPlants.sort(() => Math.random() - Math.random())
+
+    const [color, setColor] = useState('all')
+    const [location, setLocation] = useState('all')
+
+
+    const colorFilteredPlants = beeFilteredPlants.map((plant) => plant.farbe);
+    colorFilteredPlants.unshift('all');
+    let chosenColor = colorFilteredPlants.filter((c, index) => {
+        return colorFilteredPlants.indexOf(c) === index;
     })
 
     const byColor = (plant) => {
         if (color === 'all') return plant;
         return plant.farbe === color;
     }
+
     const locationFilter = beeFilteredPlants.map((plant) => plant.pflanzort);
     locationFilter.unshift('all');
     let chosenLocation = locationFilter.filter((c, index) => {
@@ -33,22 +37,21 @@ export default function Bee({ plants, onSelectFavorites, isFavorite, favorites }
         return plant.pflanzort === location;
     }
 
-    const data = beeFilteredPlants.filter(byColor).filter(byLocation);
+    const data =
+        beeFilteredPlants.filter(byColor).filter(byLocation);
 
     return (
         <>
+            <BurgerMenu
+                color={color}
+                setColor={setColor}
+                location={location}
+                setLocation={setLocation}
+                chosenColor={chosenColor}
+                chosenLocation={chosenLocation} />
             <h2>Bienen</h2>
             <Wrapper>
-                {chosenColor.map((color, index) => (
-                    <button key={index} value={color} onClick={(event) => setColor(event.target.value)}>
-                        {color}
-                    </button>
-                ))}
-                {chosenLocation.map((location, index) => (
-                    <button key={index} value={location} onClick={(event) => setLocation(event.target.value)}>
-                        {location}
-                    </button>
-                ))}
+
 
                 {data.map((beeFilteredPlant) =>
                 (<PlantCard
@@ -63,7 +66,6 @@ export default function Bee({ plants, onSelectFavorites, isFavorite, favorites }
                     wasser={beeFilteredPlant.wasser}
                     onSelectFavorites={() => onSelectFavorites(beeFilteredPlant._id)}
                     isFavorite={isFavorite(favorites, beeFilteredPlant._id)} />))}
-
             </Wrapper>
         </>
     )
@@ -74,9 +76,7 @@ export default function Bee({ plants, onSelectFavorites, isFavorite, favorites }
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
-
 margin: 1rem;
 grid-gap: 1rem;
-
-
+min-height: 100vh;
 `
