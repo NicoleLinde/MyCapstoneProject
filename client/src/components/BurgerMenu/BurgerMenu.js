@@ -4,8 +4,16 @@ import Menu from '../BurgerMenu/Menu'
 
 
 
-export default function BurgerMenu({ color, setColor, location, setLocation, chosenColor, chosenLocation }) {
+export default function BurgerMenu({
+    color,
+    setColor,
+    location,
+    setLocation,
+    chosenColor,
+    chosenLocation
+}) {
     const [open, setOpen] = useState(false)
+
     // const [color, setColor] = useState('all')
     // const [location, setLocation] = useState('all')
 

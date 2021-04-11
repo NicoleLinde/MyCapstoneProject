@@ -3,13 +3,11 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyles = createGlobalStyle`
 :root {
     --primary: #246914;
-  
-  
-    --white: #FFFFFF;
-    
-  
     --middle: #DEE8DB;
-  
+    --middle-transparent:rgba(222, 232, 219, 0.9);
+    --dark-middle:#96B78E;
+    --grey: #647362;
+    --white: #FFFFFF;
   }
 
 
@@ -24,7 +22,7 @@ body {
     margin:0;
     font-family: 'Cairo';
     padding-bottom: 7rem;
-    background: linear-gradient(0deg, var(--primary) 40%, #dee8db 69%, #FFFFFF 100%);
+    background: linear-gradient(0deg, var(--primary) 40%, var(--middle) 69%, var(--white) 100%);
     background-repeat: no-repeat;
 }
 

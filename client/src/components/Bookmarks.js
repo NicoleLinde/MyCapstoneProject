@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import Favorites from '../assets/heart-active.svg'
 import NotFavorite from '../assets/heart-inactive.svg'
-import { useState } from 'react'
 
 
-export default function ({ onSelectFavorites, id, isFavorite }) {
+
+export default function ({ onSelectFavorites, isFavorite }) {
 
 
 

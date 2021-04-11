@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import styled from 'styled-components'
 import PlantCard from '../components/PlantCard'
 import BurgerMenu from '../components/BurgerMenu/BurgerMenu'
@@ -9,7 +9,7 @@ export default function Bee({ plants, onSelectFavorites, isFavorite, favorites }
         plant.bienenfreundlich === true))
 
 
-    const beeFilteredPlants = filteredPlants.sort(() => Math.random() - Math.random())
+    const beeFilteredPlants = useMemo(() => filteredPlants.sort(() => Math.random() - Math.random()), [plants])
 
     const [color, setColor] = useState('all')
     const [location, setLocation] = useState('all')

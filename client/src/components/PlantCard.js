@@ -112,13 +112,13 @@ overflow: hidden;
 
 const Headline = styled.h3`
 margin: 0;
-color: #246914;
+color: var(--primary);
 position: absolute;
 top: 14rem;
 `
 const LatName = styled.p`
 margin-top: -1rem;
-color:#647362;
+color:var(--grey);
 
 `
 

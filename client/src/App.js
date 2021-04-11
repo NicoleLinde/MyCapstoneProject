@@ -80,8 +80,12 @@ function App() {
           {isLoading && <div>Loading...</div>}
           {plants && <Bird plants={plants} onSelectFavorites={selectFavorites} isFavorite={isFavorite} favorites={favorites} />}
         </Route>
+        <Route path='/Profile'>
+        </Route>
         <Route path='/Favorites'>
           <Favorites favorites={favorites} isFavorite={isFavorite} onSelectFavorites={removeFavorites} />
+        </Route>
+        <Route path='/Calendar'>
         </Route>
       </Switch>
       <FooterNavigation plants={plants} />

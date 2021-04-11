@@ -129,7 +129,7 @@ position:relative;
 display:flex;
 align-items: center;
 boxshadow:0 4px 8px rgba(0,0,0,0.2);
-background-color:#96B78E;
+background-color:var(--dark-middle);
 width: ${props => (props.searchBarOpen ? '14rem' : '3rem')};
 cursor: ${props => (props.searchBarOpen ? 'auto' : 'pointer')};
 padding: 0.8rem;

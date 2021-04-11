@@ -1,5 +1,5 @@
 import PlantCard from '../components/PlantCard'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import styled from 'styled-components'
 import BurgerMenu from '../components/BurgerMenu/BurgerMenu'
 
@@ -8,7 +8,8 @@ export default function Bird({ plants, onSelectFavorites, isFavorite, favorites 
     const filteredPlants = (plants.filter((plant) =>
         plant.vogelfreundlich === true))
 
-    const birdFilteredPlants = filteredPlants.sort(() => Math.random() - Math.random())
+    const birdFilteredPlants = useMemo(() => filteredPlants.sort(() => Math.random() - Math.random()), [plants])
+
 
     const [color, setColor] = useState('all')
     const [location, setLocation] = useState('all')
